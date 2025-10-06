@@ -1,0 +1,12 @@
+{
+  "name": "lps-puzzle-games",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "bootstrap": "npm install concurrently && (cd microservices/score-service && npm install) && (cd microservices/auth-service && npm install) && (cd microservices/game-api && npm install) && (cd frontend && npm install)",
+    "start:all": "npx concurrently \"node microservices/score-service/server.js\" \"node microservices/auth-service/server.js\" \"node microservices/game-api/server.js\" \"node frontend/server.js\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0"
+  }
+}

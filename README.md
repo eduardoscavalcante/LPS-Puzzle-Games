@@ -1,105 +1,75 @@
-# Linha de Produto de Software (LPS) - Jogos de Puzzle Não Violentos 🧩
+# LPS Puzzle Games - Linha de Produto de Software (Projeto Acadêmico)
 
-## 🎯 Descrição Geral
-Este projeto apresenta uma **Linha de Produto de Software (LPS)** voltada para o desenvolvimento de **jogos de puzzle não violentos**, utilizando **componentes de software reutilizáveis** e uma **arquitetura baseada em microserviços**.  
-O objetivo é demonstrar como diferentes variações de jogos (por exemplo, Sudoku, Quebra-Cabeça e Jogo da Memória) podem ser geradas a partir de um núcleo comum de funcionalidades.
+Projeto simples demonstrando uma Linha de Produto de Software (LPS) para jogos não violentos.
+Contém:
+- Frontend com 3 jogos (Memory, Sudoku - versão simples, Puzzle - versão simplificada)
+- Componentes reutilizáveis (ES modules)
+- Microservices reais em Node.js: score-service, auth-service, game-api
+- Server estático para frontend
 
----
+## Como executar (passo a passo)
 
-## 🧱 Estrutura da LPS
-A LPS é composta por:
-- **Core (Núcleo Comum)**: lógica base de gerenciamento de níveis, pontuação e interface.
-- **Componentes Variáveis**: regras de jogo específicas de cada puzzle.
-- **Microserviços**:
-  - `auth-service`: autenticação e login de jogadores.
-  - `score-service`: registro e consulta de pontuação.
-  - `puzzle-engine`: lógica principal do jogo.
-  - `game-api`: comunicação entre front-end e back-end.
+Pré-requisitos:
+- Node.js (v16+ recomendado)
+- npm
 
----
+1. No terminal, vá para a pasta do projeto:
+```bash
+cd lps-puzzle-games
+```
 
-## 🕹️ Jogos Derivados (Exemplos)
-1. **Sudoku Puzzle**
-   - Geração aleatória de tabuleiros.
-   - Validação de regras.
-   - Interface com dicas e tempo.
+2. Instale dependências globais do root (concurrently) e dependências locais:
+```bash
+npm install
+cd microservices/score-service && npm install
+cd ../auth-service && npm install
+cd ../game-api && npm install
+cd ../../frontend && npm install
+cd ..
+```
 
-2. **Quebra-Cabeça**
-   - Divisão de imagem em peças.
-   - Sistema de arrastar e soltar.
-   - Contador de movimentos.
+(ou, de forma mais direta:)
+```bash
+# a partir da raiz do projeto
+npm run bootstrap
+```
 
-3. **Jogo da Memória**
-   - Cartas viradas.
-   - Sistema de pares.
-   - Contador de tentativas e tempo.
+3. Inicie todos os serviços (frontend + microservices):
+```bash
+npm run start:all
+```
 
----
+Isso irá iniciar:
+- Frontend (servido em http://localhost:5500)
+- Score Service (http://localhost:3001)
+- Auth Service (http://localhost:3002)
+- Game API (http://localhost:3003)
 
-## ⚙️ Tecnologias Utilizadas
-- **Front-end:** React.js (ou HTML/CSS/JS simples para protótipo)
-- **Back-end:** Node.js com Express
-- **Banco de Dados:** MongoDB (para pontuações e perfis)
-- **Comunicação:** REST API
-- **Containerização:** Docker (opcional)
+4. Abra no navegador:
+```
+http://localhost:5500/games/memory/index.html
+http://localhost:5500/games/sudoku/index.html
+http://localhost:5500/games/puzzle/index.html
+```
 
----
+## Estrutura principal
+```
+lps-puzzle-games/
+├─ core/                     # componentes reutilizáveis (ES modules)
+├─ frontend/                 # servidor estático + assets
+│  ├─ games/
+│  │  ├─ memory/
+│  │  ├─ sudoku/
+│  │  └─ puzzle/
+│  └─ server.js              # servidor estático para desenvolvimento
+├─ microservices/
+│  ├─ score-service/
+│  ├─ auth-service/
+│  └─ game-api/
+└─ README.md
+```
 
-## 🧩 Componentização
-Cada jogo herda componentes do núcleo:
-- `GameEngine` → lógica base de execução.
-- `ScoreManager` → registro e exibição de pontuação.
-- `UserSession` → controle de sessão e progresso.
-- `GameUI` → interface reutilizável com personalização via tema.
-
----
-
-## 🏗️ Como Rodar o Projeto
-1. **Clonar o repositório:**
-   ```bash
-   git clone [link]
-   cd lps-puzzle-games
-   ```
-
-2. **Instalar dependências:**
-   ```bash
-   npm install
-   ```
-
-3. **Executar os microserviços:**
-   ```bash
-   npm run start:auth
-   npm run start:score
-   npm run start:engine
-   npm run start:api
-   ```
-
-4. **Executar o front-end:**
-   ```bash
-   npm start
-   ```
-
----
-
-## 📚 Conceitos de Engenharia de Software Aplicados
-- **Reutilização de Componentes**
-- **Modularização e Separação de Responsabilidades**
-- **Arquitetura de Microserviços**
-- **Variabilidade de Produto**
-- **Manutenibilidade e Escalabilidade**
-
----
-
-## 🧠 Possíveis Extensões Futuras
-- Sistema de login social (Google/Facebook)
-- Ranking global de jogadores
-- Modo multiplayer cooperativo
-- Suporte a temas (ex: natureza, espaço, arte)
-
----
-
-## 👨‍💻 Autor
-**Eduardo Serpa**  
-Disciplina: *Tópicos em Engenharia de Software*  
-Curso: *Ciência da Computação – Universidade Federal de Alagoas*  
-Contato institucional: esc3@ic.ufal.br
+## Notas
+- Os microservices usam arquivos JSON simples para persistência (fácil de explicar no relatório).
+- O projeto foi feito para ser simples e demonstrar arquitetura, variabilidade e reuso dentro de uma LPS.
+- Se quiser, posso gerar o arquivo ZIP do repositório já pronto para upload (eu já gerei; baixe pelo link fornecido).
