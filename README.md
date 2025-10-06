@@ -68,8 +68,3 @@ lps-puzzle-games/
 │  └─ game-api/
 └─ README.md
 ```
-
-## Notas
-- Os microservices usam arquivos JSON simples para persistência (fácil de explicar no relatório).
-- O projeto foi feito para ser simples e demonstrar arquitetura, variabilidade e reuso dentro de uma LPS.
-- Se quiser, posso gerar o arquivo ZIP do repositório já pronto para upload (eu já gerei; baixe pelo link fornecido).
