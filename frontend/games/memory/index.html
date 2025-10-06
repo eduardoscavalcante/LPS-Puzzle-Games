@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Memory — LPS Puzzle</title>
+<link rel="stylesheet" href="../common.css">
+</head>
+<body>
+  <main>
+    <h1>Memory — LPS Puzzle</h1>
+    <section class="controls">
+      <label for="difficulty">Dificuldade:</label>
+      <select id="difficulty">
+        <option value="easy">Fácil (3x4)</option>
+        <option value="medium" selected>Médio (4x4)</option>
+        <option value="hard">Difícil (4x6)</option>
+      </select>
+      <button id="startBtn">Iniciar</button>
+      <button id="scoresBtn">Ver melhores</button>
+    </section>
+
+    <div id="info">Movimentos: <span id="moves">0</span> • Tempo: <span id="timer">00:00</span></div>
+    <div id="board" class="board"></div>
+
+    <div id="modal" class="modal hidden">
+      <h2>Você venceu!</h2>
+      <p id="stats"></p>
+      <input id="playerName" placeholder="Seu nome"/>
+      <button id="saveBtn">Salvar pontuação</button>
+      <button id="closeModal">Fechar</button>
+    </div>
+
+    <div id="scoresModal" class="modal hidden">
+      <h3>Top Scores</h3>
+      <ol id="scoresList"></ol>
+      <button id="closeScores">Fechar</button>
+    </div>
+  </main>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
